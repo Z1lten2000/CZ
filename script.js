@@ -42,6 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function renderApp() {
         // Настройка Happy Hour
         startTimer();
+        renderHistory();
         
         // Отрисовка кейсов
         casesGrid.innerHTML = '';
@@ -75,6 +76,34 @@ document.addEventListener("DOMContentLoaded", () => {
             
             card.onclick = () => openModal(caseItem);
             casesGrid.appendChild(card);
+        });
+    }
+
+    function renderHistory() {
+        if (!appData.history || appData.history.length === 0) {
+            historyList.innerHTML = '<div style="text-align:center; color:#666;">Пока нет игр...</div>';
+            return;
+        }
+
+        historyList.innerHTML = '';
+        appData.history.forEach(item => {
+            const row = document.createElement('div');
+            // Определяем класс: win или loss
+            const statusClass = item.is_win ? 'win' : 'loss';
+            const sign = item.is_win ? '+' : '';
+            // Первая буква имени для аватарки
+            const avatarChar = item.name.charAt(0).toUpperCase();
+            
+            row.className = `history-card ${statusClass}`;
+            row.innerHTML = `
+                <div class="h-avatar">${avatarChar}</div>
+                <div class="h-info">
+                    <span class="h-name">${item.name}</span>
+                    <span class="h-game">${item.game}</span>
+                </div>
+                <div class="h-amount">${sign}${item.amount.toLocaleString()}</div>
+            `;
+            historyList.appendChild(row);
         });
     }
 
