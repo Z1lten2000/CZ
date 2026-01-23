@@ -222,3 +222,57 @@ h1 {
 .rare { color: #8b5cf6; background: rgba(139, 92, 246, 0.1); }
 .uncommon { color: #fff; background: rgba(255, 255, 255, 0.05); }
 .common { color: #666; }
+
+/* --- HISTORY SECTION --- */
+.history-container {
+    padding: 0 15px 40px 15px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 18px;
+    font-weight: 800;
+    margin: 20px 0 10px 10px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.history-card {
+    display: flex;
+    align-items: center;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    transition: transform 0.1s;
+}
+
+.history-card.win {
+    border-left: 4px solid var(--accent-green);
+    background: linear-gradient(90deg, rgba(16, 185, 129, 0.1), rgba(255,255,255,0.02));
+}
+
+.history-card.loss {
+    border-left: 4px solid var(--accent-red);
+    background: linear-gradient(90deg, rgba(239, 68, 68, 0.1), rgba(255,255,255,0.02));
+}
+
+.h-avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: #333;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; margin-right: 12px;
+    border: 2px solid rgba(255,255,255,0.1);
+}
+
+.h-info { flex: 1; }
+.h-name { font-size: 14px; font-weight: 700; color: var(--text-main); display: block; }
+.h-game { font-size: 11px; color: var(--text-muted); text-transform: uppercase; }
+
+.h-amount { font-size: 16px; font-weight: 800; }
+.win .h-amount { color: var(--accent-green); text-shadow: 0 0 10px rgba(16, 185, 129, 0.4); }
+.loss .h-amount { color: var(--accent-red); }
